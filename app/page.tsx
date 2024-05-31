@@ -16,7 +16,9 @@ const Home: React.FC = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("favoriteCities", JSON.stringify(favoriteCities));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("favoriteCities", JSON.stringify(favoriteCities));
+    }
   }, [favoriteCities]);
 
   const fetchWeather = async (city: string) => {
